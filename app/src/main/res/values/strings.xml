@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="test_vibrator">Test vibrator</string>
+    <string name="show_sensors">Show sensors</string>
+    <string name="show_picture">Show picture</string>
+</resources>

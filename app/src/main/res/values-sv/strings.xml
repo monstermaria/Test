@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Test</string>
+    <string name="edit_message">Skriv ett meddelande</string>
+    <string name="button_send">Skicka</string>
+    <string name="test_vibrator">Testa vibratorn</string>
+    <string name="show_sensors">Visa sensorer</string>
+    <string name="show_picture">Visa bild</string>
+</resources>
