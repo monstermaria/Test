@@ -10,9 +10,12 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import static java.lang.Math.abs;
 
 public class DisplaySensorsActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -51,10 +54,34 @@ public class DisplaySensorsActivity extends AppCompatActivity implements SensorE
         float[] values = sensorEvent.values;
         String text = "Accelerometer\n";
         for (int i = 0; i < values.length; i ++) {
-            text += String.valueOf(i) + ": " + String.valueOf(values[i]) + "\n";
+            text += i + ": " + values[i] + "\n";
         }
         TextView textView = findViewById(R.id.textViewSensors);
         textView.setText(text);
+
+        ImageView imageView = findViewById(R.id.imageView3);
+        float x = values[0];
+        float y = values[1];
+
+        if (abs(x) < abs(y)) {
+            // display picture in portrait orientation
+            if (y < 0) {
+                // display picture up side down
+                imageView.setRotation(180);
+            } else {
+                // display picture as default
+                imageView.setRotation(0);
+            }
+        } else {
+            // display picture in landscape orientation
+            if (x < 0) {
+                // display picture rotated 90 degrees counter clockwise
+                imageView.setRotation(-90);
+            } else {
+                // display picture rotated 90 degrees clockwise
+                imageView.setRotation(90);
+            }
+        }
     }
 
     @Override
@@ -69,8 +96,4 @@ public class DisplaySensorsActivity extends AppCompatActivity implements SensorE
         sensorManager.unregisterListener(this);
     }
 
-    public void showPicture(View view) {
-        Intent intent = new Intent(this, DisplayPictureActivity.class);
-        startActivity(intent);
-    }
 }
